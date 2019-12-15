@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +6,12 @@
 </head>
 <body>
     <h3>My Custom Login Page</h3>
-    ${pageContext.request.contextPath} give us access to context path dynamically
+    <!-- ${pageContext.request.contextPath} give us access to context path dynamically -->
     <form action='${pageContext.request.contextPath}/authenticateTheUser' method='POST'>
         <p>
             Username:
             <input type='text' name='username' />
-            <!-- Spring Security Filters will read form data and authenticate the user
+            <!-- Spring Security Filters will read form data and authenticate the user -->
         </p>
         <p>
             Password:
@@ -21,4 +21,4 @@
         <input type='submit' value='Login' />
     </form>
 </body>
-</html>--->
+</html>

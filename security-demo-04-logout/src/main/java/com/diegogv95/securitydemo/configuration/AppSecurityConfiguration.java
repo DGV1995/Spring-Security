@@ -29,9 +29,12 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .anyRequest().authenticated() // Any request must be authenticated
                 .and()
-                .formLogin()
+                .formLogin().permitAll() // Allow everyone to see the login page
+                .and()
+                .logout().permitAll();
+                /*.formLogin()
                     .loginPage("/showMyLoginPage") //GetMapping url in the LoginController
                     .loginProcessingUrl("/authenticateTheUser") // this URL will be handled by Spring Security Filters (no coding required)
-                    .permitAll(); // Allow everyone to see the login page
+                    .permitAll(); // Allow everyone to see the login page*/
     }
 }
