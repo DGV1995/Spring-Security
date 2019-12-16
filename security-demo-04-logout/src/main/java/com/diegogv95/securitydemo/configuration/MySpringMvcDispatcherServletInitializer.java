@@ -2,7 +2,7 @@ package com.diegogv95.securitydemo.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-
+/*
 public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -18,4 +18,4 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
-}
+}*/
