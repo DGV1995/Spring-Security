@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -16,25 +15,24 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
         UserBuilder users = User.withDefaultPasswordEncoder();
 
         auth.inMemoryAuthentication()
-                .withUser(users.username("Diego").password("1234").roles("ADMIN"))
+                .withUser(users.username("Diego").password("1234").roles("EMPLOYEE", "ADMIN"))
                 .withUser(users.username("Pepito").password("1234").roles("EMPLOYEE"))
-                .withUser(users.username("Jaimito").password("1234").roles("MANAGER"));
+                .withUser(users.username("Jaimito").password("1234").roles("EMPLOYEE", "MANAGER"));
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Configure security of web paths in application, login, logout, etc
         http.authorizeRequests()
-                .anyRequest().authenticated() // Any request must be authenticated
+                .antMatchers("/").permitAll() // this url will be public for all the users
+                .antMatchers("/employees").hasRole("EMPLOYEE") // this url will be public only for employees
+                .antMatchers("/leaders/**").hasRole("MANAGER") // this url will be public only for managers
+                .antMatchers("/systems/**").hasRole("ADMIN") // this url will be public only for admins
                 .and()
                 .formLogin().permitAll() // Allow everyone to see the login page
                 .and()
-                .logout().permitAll();
-                // Custom Login is not working!
-                /*.formLogin()
-                    .loginPage("/showMyLoginPage") //GetMapping url in the LoginController
-                    .loginProcessingUrl("/authenticateTheUser") // this URL will be handled by Spring Security Filters (no coding required)
-                    .permitAll(); // Allow everyone to see the login page
-                 */
+                .logout()
+                .logoutSuccessUrl("/")
+                .permitAll();
     }
 }

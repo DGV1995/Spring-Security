@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>DiegoGV Home Page</title>
+</head>
+<body>
+    <h1>DiegoGV Home Page</h1>
+    <hr/>
+    <!-- Display user name and role -->
+    <p>
+        User: <span sec:authentication='name'></span>
+        <br/>
+        Role(s): <span sec:authentication='authorities'></span>
+    </p>
+    <hr/>
+    <p>Welcome to the DiegoGV home page!</p>
+
+    <hr/>
+
+    <!-- Add a link to point to /leaders -->
+    <p>
+        <a href="/leaders">LeaderShip Meeting</a>
+    </p>
+
+    <form action="/logout" method="GET">
+        <input type="submit" value="Logout" />
+    </form>
+</body>
+</html>

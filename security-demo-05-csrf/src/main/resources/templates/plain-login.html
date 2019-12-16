@@ -19,6 +19,9 @@
         </p>
 
         <input type='submit' value='Login' />
+
+        <!-- Adding CSRF token manually. SpringBoot default login form has it already implemented! -->
+        <input type='hidden' name='${_csrf.parameterName}' value='${_csrf.token}' />
     </form>
 </body>
 </html>
