@@ -22,7 +22,6 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .withUser(users.username("Jaimito").password("1234").roles("MANAGER"));
     }
 
-    // Custom Login is not working!
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Configure security of web paths in application, login, logout, etc
@@ -32,6 +31,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin().permitAll() // Allow everyone to see the login page
                 .and()
                 .logout().permitAll();
+                // Custom Login is not working!
                 /*.formLogin()
                     .loginPage("/showMyLoginPage") //GetMapping url in the LoginController
                     .loginProcessingUrl("/authenticateTheUser") // this URL will be handled by Spring Security Filters (no coding required)
