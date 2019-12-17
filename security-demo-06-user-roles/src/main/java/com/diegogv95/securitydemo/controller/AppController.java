@@ -25,9 +25,9 @@ public class AppController {
         return "systems";
     }
 
-    @GetMapping("/error")
-    public String showError() {
+    @GetMapping("/error-page")
+    public String showErrorPage() {
         return "error";
-    }
 
+    }
 }
