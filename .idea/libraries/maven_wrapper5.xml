@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="maven-wrapper5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/security-demo-05-csrf/.mvn/wrapper/maven-wrapper.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
